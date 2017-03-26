@@ -29,10 +29,8 @@ class TableViewController: UITableViewController {
                 
                 for object in users
                 {
-                    if let user = object as? PFUser
-                        
-                    {
-                        
+                    if let user = object as? PFUser                      
+                    {                      
                         if user.objectId != PFUser.currentUser()?.objectId
                         {
                             self.usernames.append(user.username!)
@@ -44,42 +42,26 @@ class TableViewController: UITableViewController {
                                 if let objects = objects
                                 {
                                     if objects.count > 0
-                                    {
-                                        
-                                        self.isFollowing[user.objectId!] = true
-                                        
+                                    {                                   
+                                        self.isFollowing[user.objectId!] = true                               
                                     }
                                     else
-                                    {
-                                        
-                                        self.isFollowing[user.objectId!] = false
-                                        
+                                    {                              
+                                        self.isFollowing[user.objectId!] = false                               
                                     }
                                 }
                                 if self.isFollowing.count == self.usernames.count
                                 {
-                                    self.tableView.reloadData()
-                                    
+                                    self.tableView.reloadData()                  
                                     self.refresher.endRefreshing()
-                                }
-                                
-                            })
-                            
-                        }
-                        
-                    }
-                    
-                }
-                
-                
-            }
-            
-            
+                                }                             
+                            })                          
+                        }              
+                    }          
+                }       
+            }         
         })
-        
-
-    
-    }
+     }
     
     
 
@@ -158,19 +140,10 @@ class TableViewController: UITableViewController {
                 {
                     for object in objects
                     {
-                    object.deleteInBackground()
-                    
-                    }
-                    
-                
+                    object.deleteInBackground()                
+                    }           
                 }
-                
-            })
-
-      
-            
-        }
-    
+            })           
+        } 
     }
-
 }
