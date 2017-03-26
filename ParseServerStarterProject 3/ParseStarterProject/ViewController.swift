@@ -19,42 +19,27 @@ class ViewController: UIViewController {
  
     @IBOutlet weak var password: UITextField!
   
-    var activityIndicator : UIActivityIndicatorView = UIActivityIndicatorView()
-    
-    
-    @IBOutlet weak var enterButton: UIButton!
-    
-    
-    @IBOutlet weak var registeredText: UILabel!
-    
+    var activityIndicator : UIActivityIndicatorView = UIActivityIndicatorView()  
+    @IBOutlet weak var enterButton: UIButton!   
+    @IBOutlet weak var registeredText: UILabel!  
     @IBOutlet weak var loginButton: UIButton!
     
-    
-    
-    
+   
     func displayAlert(title: String, message: String)
-    {
-        
-        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        
+    {  
+        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)       
         alert.addAction(UIAlertAction(title: "ok", style: .Default, handler: { (action) -> Void in
             self.dismissViewControllerAnimated(true, completion: nil)
         }))
-        self.presentViewController(alert, animated: true, completion: nil)
-    
-    
+        self.presentViewController(alert, animated: true, completion: nil)   
     }
-    
-    
-    
-    
+
     @IBAction func signUp(sender: AnyObject) {
         
         if username.text == ""  || password.text == ""
         {
             displayAlert("Error in form", message: "Please enter a username and password")
         } 
-        
         else
         {
             activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
@@ -66,8 +51,7 @@ class ViewController: UIViewController {
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
             
             var errorMessage = "Please try again later."
-
-            
+           
             if signupActive == true
             {
             
@@ -113,24 +97,13 @@ class ViewController: UIViewController {
                 {
                     if let errorString = error!.userInfo["error"] as? String
                     {
-                        errorMessage = errorString
-                        
-                    }
-                    
-                    self.displayAlert("Failed Login", message : errorMessage)
-                
-                
-                }
-                
-                
-                
-            })
-            
-            
+                        errorMessage = errorString                       
+                    }                   
+                    self.displayAlert("Failed Login", message : errorMessage)      
+                }            
+            })         
             }
-        }
-        
-        
+        }        
     }
     
     @IBAction func login(sender: AnyObject) {
@@ -141,33 +114,22 @@ class ViewController: UIViewController {
         enterButton.setTitle("Login", forState: UIControlState.Normal)
             registeredText.text = "Not registered?"
             loginButton.setTitle("Sign Up", forState: UIControlState.Normal)
-            signupActive = false
-        
-        }
-        
+            signupActive = false      
+        }    
         else
-        {
-            
+        {        
             enterButton.setTitle("Sign Up", forState: UIControlState.Normal)
             registeredText.text = "Already registered?"
             loginButton.setTitle("Login", forState: UIControlState.Normal)
-            signupActive = true
-        
-        }
-        
+            signupActive = true    
+        }      
     }
-    
-    
-    
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
  
-    }
-    
+    }    
     override func viewDidAppear(animated: Bool) {
        /* if PFUser.currentUser() != nil
         {
@@ -175,13 +137,8 @@ class ViewController: UIViewController {
            // self.performSegueWithIdentifier("login", sender: self)
         
         }
-        */
-        
-        
-        
-        
+        */  
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
